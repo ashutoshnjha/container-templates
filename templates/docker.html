@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% set active_page = "docker" %}
+
+{% block title %}Dockerfile{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+{% endblock %}
+
+{% block page_content %}
+<h1 class="cap">Create Dockerfile template</h1>
+{% if message %}
+{{ message }}
+{% endif %}
+{% if fileLink %}
+<h4>Your chosen option are:</h4>
+<h5>{{result}} and generated template is 
+</h5><a class="link-success" href="/tpl/{{fileLink}}">Dockerfile</a>
+<br />
+
+{% else %}
+
+<h3>Attributes for Dockerfile</h3>
+<form class="form-horizontal" action="/dockerize" method="post">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="application">Choose an application:</label>
+        <select id="application" name="application">
+            <option value="coreJava">coreJava</option>
+            <option value="fastApi" selected>FastApi</option>
+            <option value="node">NodeJs</option>
+            <option value="react">React</option>
+            <option value="springboot">SpringBoot</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="port">Port:</label>
+        <input type="number" id="port" name="port" value="" required>
+    </div>
+    <input type="submit">
+</form>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

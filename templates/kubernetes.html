@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% set active_page = "docker" %}
+
+{% block title %}Kubernetes{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+{% endblock %}
+
+{% block page_content %}
+<h1 class="cap">Create kubeservice.yaml template</h1>
+{% if message %}
+{{ message }}
+{% endif %}
+{% if fileLink %}
+<h4>Your chosen option are:</h4>
+<h5>{{result}} and generated template is {{fileLink}}.</h5>
+{% endif %}
+<h3>Attributes for Kubeservice</h3>
+<p> it is under construction
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}
