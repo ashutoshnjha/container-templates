@@ -9,11 +9,11 @@ def test_home():
         "/", headers={"content-type": "text/html; charset=utf-8"})
     assert response.status_code == 200
     assert b"Containerisation template work<" in response.content
-    response = client.get("/static/css/style3.css")
+    response = client.get("/assets/css/bs/style3.css")
     assert response.status_code == 200
 
 
-def test_page_about():
+def test_about():
     response = client.get("/about",
                           headers={"content-type": "text/html; charset=utf-8"})
     assert response.status_code == 200
