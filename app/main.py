@@ -20,8 +20,8 @@ app.include_router(kubernetes.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    return templates.TemplateResponse("render.html", {"request": request, "data": readFile("home.md")})
-
+    result = "Anj"
+    return templates.TemplateResponse('home.html', context={'request': request, 'result': result})
 
 @app.get("/{page_name}", response_class=HTMLResponse)
 async def redner_page(request: Request, page_name: str):

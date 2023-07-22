@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% set active_page = "docker" %}
+{% set active_page = "kubernetes" %}
 
 {% block title %}Kubernetes{% endblock %}
 
@@ -10,16 +10,47 @@
 {% endblock %}
 
 {% block page_content %}
-<h1 class="cap">Create kubeservice.yaml template</h1>
+<h1 class="cap">Create kubeservice.yaml</h1>
 {% if message %}
 {{ message }}
 {% endif %}
 {% if fileLink %}
 <h4>Your chosen option are:</h4>
-<h5>{{result}} and generated template is {{fileLink}}.</h5>
+<h5>{{result}} and generated template is 
+</h5><a class="link-success" href="/tpl/{{fileLink}}">kubeservice.yaml</a>
+<br />
+
+{% else %}
+
+<h3>Attributes for kubeservice.yaml</h3>
+<form class="form-horizontal" action="/kubefile" method="post">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="app_name">App name:</label>
+        <input type="text" id="app_name" name="app_name" value="anj-app" required>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="image">Container Image:</label>
+        <input type="text" id="image" name="image" value="anjha/fastapi-hello:latest" required>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="container_name">Container name:</label>
+        <input type="text" id="container_name" name="container_name" value="anj-container" required>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="port">Port:</label>
+        <input type="number" id="port" name="port" value="8080" title="Inside the cluster, what port does the service expose?" required>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="nodePort">Node Port:</label>
+        <input type="number" id="nodePort" name="nodePort" value="31001" title="Which port on the node is the service available through? Opt in range of 30000-32767 " required>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="targetPort">Target Port:</label>
+        <input type="number" id="targetPort" name="targetPort" title="Which port do pods selected by this service expose?" value="8080" required>
+    </div>
+    <input type="submit">
+</form>
 {% endif %}
-<h3>Attributes for Kubeservice</h3>
-<p> it is under construction
 
 {% endblock %}
 

@@ -1,5 +1,19 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
 
-<h1>
-    Containerizaion templagte creation-AnjLab
-</h1>
-{{data.page}}
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+{% endblock %}
+
+{% block page_content %}
+<h1 class="cap">FastApi Based WebApplication powred by Python</h1>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+{% endblock %}
